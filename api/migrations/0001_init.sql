@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS users (
+id TEXT PRIMARY KEY,
+email TEXT UNIQUE NOT NULL,
+created_at INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS sessions (
+id TEXT PRIMARY KEY,
+user_id TEXT NOT NULL,
+created_at INTEGER NOT NULL,
+expires_at INTEGER NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS magic_links (
+id TEXT PRIMARY KEY,
+email TEXT NOT NULL,
+token_hash TEXT NOT NULL,
+created_at INTEGER NOT NULL,
+expires_at INTEGER NOT NULL,
+used INTEGER NOT NULL DEFAULT 0,
+redirect_to TEXT
+);
