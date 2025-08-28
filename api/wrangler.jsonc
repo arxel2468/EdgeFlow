@@ -21,5 +21,13 @@
 		"preview_database_id": "edgeflow_dev",   // ensures dev uses local DB
 		"migrations_dir": "migrations"
 	  }
-	]
+	],
+	"queues":{
+		"producers":[
+			{"binding":"RUNS_QUEUE","queue":"edgeflow-runs"}
+		],
+		"consumers":[
+			{"queue":"edgeflow-runs"}
+		]
+	}
   }
